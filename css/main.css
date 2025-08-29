@@ -28,7 +28,68 @@ body {
   width: 100%;
   height: 100%;
   filter: blur(0.1vmin);
-  background-image: radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), repeating-linear-gradient(220deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), linear-gradient(90deg, rgb(7, 107, 42), rgb(240, 240, 240));
+  background-image: 
+    radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), 
+    radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), 
+    repeating-linear-gradient(220deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), 
+    repeating-linear-gradient(189deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), 
+    repeating-linear-gradient(148deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), 
+    linear-gradient(90deg, rgb(7, 107, 42), rgb(240, 240, 240));
+}
+
+/* Add twinkling stars */
+.night::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+    radial-gradient(2px 2px at 160px 30px, #ddd, transparent),
+    radial-gradient(1px 1px at 200px 60px, #fff, transparent),
+    radial-gradient(2px 2px at 240px 20px, #eee, transparent),
+    radial-gradient(1px 1px at 280px 90px, #fff, transparent),
+    radial-gradient(1px 1px at 320px 40px, #fff, transparent),
+    radial-gradient(2px 2px at 360px 70px, #ddd, transparent),
+    radial-gradient(1px 1px at 400px 20px, #fff, transparent),
+    radial-gradient(1px 1px at 440px 50px, #fff, transparent);
+  background-repeat: repeat;
+  background-size: 450px 100px;
+  animation: sparkle 20s linear infinite;
+}
+
+/* Add moon glow */
+.night::after {
+  content: "";
+  position: absolute;
+  top: 8%;
+  right: 15%;
+  width: 15vmin;
+  height: 15vmin;
+  background: radial-gradient(circle, rgba(255, 255, 240, 0.8) 0%, rgba(255, 255, 240, 0.3) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: moon-glow 8s ease-in-out infinite;
+}
+
+@keyframes moon-glow {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 .flowers {
@@ -142,9 +203,49 @@ body {
   -webkit-animation-delay: 1.4s;
           animation-delay: 1.4s;
 }
+
+/* Different flower colors for variety */
+.flower--2 .flower__leaf {
+  background-image: 
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
+    linear-gradient(45deg, #9d6bff, #7c5ce3, #b48cff);
+  box-shadow: 
+    inset 0 0 2vmin rgba(255, 255, 255, 0.7),
+    0 0 1vmin rgba(138, 92, 246, 0.6),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.flower--2 .flower__leaf--4 {
+  background-image: 
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
+    linear-gradient(45deg, #9d6bff, #7c5ce3, #b48cff);
+  box-shadow: 
+    inset 0 0 2vmin rgba(255, 255, 255, 0.7),
+    0 0 1vmin rgba(138, 92, 246, 0.6);
+}
 .flower__leafs--3 {
   -webkit-animation-delay: 1.7s;
           animation-delay: 1.7s;
+}
+
+/* Third flower with orange/coral colors */
+.flower--3 .flower__leaf {
+  background-image: 
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
+    linear-gradient(45deg, #ff8a65, #ff6b35, #ffab91);
+  box-shadow: 
+    inset 0 0 2vmin rgba(255, 255, 255, 0.7),
+    0 0 1vmin rgba(255, 107, 53, 0.6),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.flower--3 .flower__leaf--4 {
+  background-image: 
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
+    linear-gradient(45deg, #ff8a65, #ff6b35, #ffab91);
+  box-shadow: 
+    inset 0 0 2vmin rgba(255, 255, 255, 0.7),
+    0 0 1vmin rgba(255, 107, 53, 0.6);
 }
 .flower__leafs::after {
   content: "";
@@ -165,10 +266,15 @@ body {
   height: 11vmin;
   border-radius: 51% 49% 47% 53%/44% 45% 55% 69%;
   background-color: #f672b0;
-  background-image: linear-gradient(to top, #ee5286, #ee5286);
+  background-image: 
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
+    linear-gradient(45deg, #ff6b9d, #ee5286, #ff8fab);
   transform-origin: bottom center;
-  opacity: 0.9;
-  box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
+  opacity: 0.95;
+  box-shadow: 
+    inset 0 0 2vmin rgba(255, 255, 255, 0.7),
+    0 0 1vmin rgba(255, 105, 180, 0.6),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.3);
 }
 .flower__leaf--1 {
   transform: translate(-10%, 1%) rotateY(40deg) rotateX(-50deg);
@@ -185,9 +291,49 @@ body {
   transform-origin: bottom left;
   border-radius: 4vmin 10vmin 4vmin 4vmin;
   transform: translate(0%, 18%) rotateX(70deg) rotate(-43deg);
-  background-image: linear-gradient(to top, #ee5286, #ee5286);
+  background-image: 
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
+    linear-gradient(45deg, #ff6b9d, #ee5286, #ff8fab);
   z-index: 1;
-  opacity: 0.8;
+  opacity: 0.85;
+  box-shadow: 
+    inset 0 0 2vmin rgba(255, 255, 255, 0.7),
+    0 0 1vmin rgba(255, 105, 180, 0.6);
+}
+
+/* Add dewdrops to petals */
+.flower__leaf::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 70%;
+  width: 1vmin;
+  height: 1vmin;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
+  border-radius: 50%;
+  box-shadow: 
+    inset 0.2vmin 0.2vmin 0.2vmin rgba(255, 255, 255, 0.8),
+    0 0 0.5vmin rgba(255, 255, 255, 0.6);
+  animation: dewdrop-sparkle 4s ease-in-out infinite;
+  animation-delay: var(--dewdrop-delay, 0s);
+}
+
+.flower__leaf--1::before { --dewdrop-delay: 0.5s; top: 30%; left: 60%; }
+.flower__leaf--2::before { --dewdrop-delay: 1.2s; top: 40%; left: 50%; }
+.flower__leaf--3::before { --dewdrop-delay: 2.1s; top: 25%; left: 65%; }
+
+@keyframes dewdrop-sparkle {
+  0%, 100% { 
+    opacity: 0.7; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2);
+    box-shadow: 
+      inset 0.2vmin 0.2vmin 0.2vmin rgba(255, 255, 255, 0.9),
+      0 0 1vmin rgba(255, 255, 255, 0.8);
+  }
 }
 .flower__white-circle {
   position: absolute;
@@ -269,9 +415,31 @@ body {
   filter: blur(0.2vmin);
   -webkit-animation: light-ans 4s linear infinite backwards;
           animation: light-ans 4s linear infinite backwards;
+  box-shadow: 
+    0 0 2vmin currentColor,
+    0 0 4vmin currentColor,
+    0 0 6vmin rgba(255, 251, 0, 0.3);
 }
 .flower__light:nth-child(odd) {
   background-color: #f76baf;
+  box-shadow: 
+    0 0 2vmin currentColor,
+    0 0 4vmin currentColor,
+    0 0 6vmin rgba(247, 107, 175, 0.3);
+}
+.flower__light:nth-child(4n) {
+  background-color: #6bf0ff;
+  box-shadow: 
+    0 0 2vmin currentColor,
+    0 0 4vmin currentColor,
+    0 0 6vmin rgba(107, 240, 255, 0.3);
+}
+.flower__light:nth-child(6n) {
+  background-color: #9d6bff;
+  box-shadow: 
+    0 0 2vmin currentColor,
+    0 0 4vmin currentColor,
+    0 0 6vmin rgba(157, 107, 255, 0.3);
 }
 .flower__light--1 {
   left: -2vmin;
@@ -1318,4 +1486,227 @@ body {
 .container * {
   -webkit-animation-play-state: paused !important;
           animation-play-state: paused !important;
+}
+
+/* Small wildflowers */
+.wildflower {
+  position: absolute;
+  bottom: 8vmin;
+  transform-origin: bottom center;
+  z-index: 5;
+  animation: wildflower-sway 3s ease-in-out infinite;
+}
+
+.wildflower--1 {
+  left: 15%;
+  animation-delay: 0.5s;
+  transform: scale(0.4);
+}
+
+.wildflower--2 {
+  left: 75%;
+  animation-delay: 1.2s;
+  transform: scale(0.3);
+}
+
+.wildflower--3 {
+  left: 30%;
+  animation-delay: 2.1s;
+  transform: scale(0.35);
+}
+
+.wildflower__petals {
+  position: relative;
+  width: 12vmin;
+  height: 12vmin;
+  animation: wildflower-bloom 1s 3s ease-out backwards;
+}
+
+.wildflower__petal {
+  position: absolute;
+  width: 4vmin;
+  height: 8vmin;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform-origin: bottom center;
+  top: 2vmin;
+  left: 4vmin;
+}
+
+.wildflower--1 .wildflower__petal {
+  background: linear-gradient(45deg, #ffeb3b, #ffc107, #fff59d);
+  box-shadow: 
+    inset 0 0 1vmin rgba(255, 255, 255, 0.6),
+    0 0 0.5vmin rgba(255, 193, 7, 0.4);
+}
+
+.wildflower--2 .wildflower__petal {
+  background: linear-gradient(45deg, #e1bee7, #ba68c8, #f3e5f5);
+  box-shadow: 
+    inset 0 0 1vmin rgba(255, 255, 255, 0.6),
+    0 0 0.5vmin rgba(186, 104, 200, 0.4);
+}
+
+.wildflower--3 .wildflower__petal {
+  background: linear-gradient(45deg, #81c784, #4caf50, #a5d6a7);
+  box-shadow: 
+    inset 0 0 1vmin rgba(255, 255, 255, 0.6),
+    0 0 0.5vmin rgba(76, 175, 80, 0.4);
+}
+
+.wildflower__petal--1 { transform: rotate(0deg); }
+.wildflower__petal--2 { transform: rotate(72deg); }
+.wildflower__petal--3 { transform: rotate(144deg); }
+.wildflower__petal--4 { transform: rotate(216deg); }
+.wildflower__petal--5 { transform: rotate(288deg); }
+
+.wildflower__center {
+  position: absolute;
+  top: 4vmin;
+  left: 4vmin;
+  width: 4vmin;
+  height: 4vmin;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff9800, #e65100);
+  box-shadow: inset 0 0 1vmin rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  animation: wildflower-center-bloom 0.5s 3.5s ease-out backwards;
+}
+
+.wildflower__stem {
+  position: absolute;
+  bottom: -2vmin;
+  left: 5.5vmin;
+  width: 1vmin;
+  height: 15vmin;
+  background: linear-gradient(to top, #2e7d32, #4caf50);
+  border-radius: 0.5vmin;
+  animation: wildflower-stem-grow 1s 2.5s ease-out backwards;
+}
+
+@keyframes wildflower-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes wildflower-bloom {
+  0% { transform: scale(0) rotate(180deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes wildflower-center-bloom {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wildflower-stem-grow {
+  0% { height: 0; }
+  100% { height: 15vmin; }
+}
+
+/* Flying butterflies */
+.butterfly {
+  position: absolute;
+  width: 3vmin;
+  height: 2vmin;
+  z-index: 30;
+  transform-origin: center;
+}
+
+.butterfly--1 {
+  top: 30%;
+  left: 10%;
+  animation: butterfly-flight-1 8s ease-in-out infinite 2s;
+}
+
+.butterfly--2 {
+  top: 20%;
+  right: 15%;
+  animation: butterfly-flight-2 10s ease-in-out infinite 5s;
+}
+
+.butterfly--3 {
+  top: 60%;
+  left: 70%;
+  animation: butterfly-flight-3 7s ease-in-out infinite 3s;
+}
+
+.butterfly__wing {
+  position: absolute;
+  width: 1.2vmin;
+  height: 1.5vmin;
+  border-radius: 50% 20% 50% 20%;
+  transform-origin: bottom center;
+}
+
+.butterfly__wing--left {
+  left: 0;
+  background: linear-gradient(45deg, #ff6b9d, #ff8fab, #ffc0cb);
+  animation: wing-flap-left 0.2s ease-in-out infinite;
+}
+
+.butterfly__wing--right {
+  right: 0;
+  background: linear-gradient(45deg, #ff6b9d, #ff8fab, #ffc0cb);
+  animation: wing-flap-right 0.2s ease-in-out infinite;
+}
+
+.butterfly--2 .butterfly__wing--left,
+.butterfly--2 .butterfly__wing--right {
+  background: linear-gradient(45deg, #9d6bff, #b48cff, #ddd0ff);
+}
+
+.butterfly--3 .butterfly__wing--left,
+.butterfly--3 .butterfly__wing--right {
+  background: linear-gradient(45deg, #ff8a65, #ffab91, #ffcdd2);
+}
+
+.butterfly__body {
+  position: absolute;
+  top: 0.2vmin;
+  left: 1.2vmin;
+  width: 0.6vmin;
+  height: 1.6vmin;
+  background: #333;
+  border-radius: 50%;
+  box-shadow: 0 0 0.5vmin rgba(255, 255, 255, 0.3);
+}
+
+@keyframes wing-flap-left {
+  0%, 100% { transform: rotateY(0deg); }
+  50% { transform: rotateY(-30deg); }
+}
+
+@keyframes wing-flap-right {
+  0%, 100% { transform: rotateY(0deg); }
+  50% { transform: rotateY(30deg); }
+}
+
+@keyframes butterfly-flight-1 {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  25% { transform: translate(20vmin, -10vmin) rotate(15deg); }
+  50% { transform: translate(40vmin, -5vmin) rotate(-10deg); }
+  75% { transform: translate(60vmin, -15vmin) rotate(20deg); }
+  90% { opacity: 1; }
+  100% { transform: translate(80vmin, -20vmin) rotate(-5deg); opacity: 0; }
+}
+
+@keyframes butterfly-flight-2 {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  25% { transform: translate(-15vmin, 10vmin) rotate(-20deg); }
+  50% { transform: translate(-30vmin, 5vmin) rotate(10deg); }
+  75% { transform: translate(-45vmin, 15vmin) rotate(-15deg); }
+  90% { opacity: 1; }
+  100% { transform: translate(-60vmin, 20vmin) rotate(5deg); opacity: 0; }
+}
+
+@keyframes butterfly-flight-3 {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  30% { transform: translate(-20vmin, -20vmin) rotate(25deg); }
+  60% { transform: translate(-10vmin, -40vmin) rotate(-15deg); }
+  80% { transform: translate(10vmin, -30vmin) rotate(10deg); }
+  90% { opacity: 1; }
+  100% { transform: translate(30vmin, -50vmin) rotate(-20deg); opacity: 0; }
 }
